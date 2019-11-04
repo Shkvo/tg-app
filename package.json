@@ -1,0 +1,21 @@
+{
+  "name": "tg-app",
+  "version": "1.0.0",
+  "description": "Telegram lightweight app",
+  "main": "index.js",
+  "author": "Shkvo <dimashkvo@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "clean": "rm dist/*.js && dist/*.js.map",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.23.3"
+  }
+}
