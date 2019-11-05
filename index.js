@@ -1,5 +1,3 @@
-import initialize from './initialize';
+import initialize from './src/initialize';
 
-;(() => {
-  initialize();
-})();
+initialize();
