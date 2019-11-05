@@ -4,14 +4,89 @@
   width: 100%;
   height: fit-content;
 }
+.default-span,
+.default-h1,
+.default-h2,
+.default-h3,
+.default-h4,
+.default-h5,
+.default-h6,
+.default-hp {
+  font-family: "Open Sans";
+}
+
+.default-span {
+  font-size: 12px;
+  color: #b3b3b3;
+}
+.input-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+.input-wrapper .default-input {
+  position: relative;
+  height: 45px;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #ccc;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  caret-color: #009ee7;
+  transition: 0.1s ease-in-out all;
+}
+.input-wrapper .default-input::placeholder {
+  color: #b3b3b3;
+  position: absolute;
+}
+.input-wrapper .default-input:focus, .input-wrapper .default-input:hover {
+  border-color: #009ee7;
+  box-shadow: 0 0 0 1px #009ee7;
+}
+.input-wrapper .input-label {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  color: #b3b3b3;
+  transition: 0.1s ease-in-out all;
+  font-size: 14px;
+}
+.input-wrapper .input-label.active {
+  font-size: 10px;
+  left: 9px;
+  top: 0px;
+  padding: 0 5px;
+  color: #b3b3b3;
+}
+.input-wrapper .default-input:focus ~ .input-label.active,
+.input-wrapper .default-input:hover ~ .input-label.active {
+  color: #009ee7;
+}
 .login-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 80px;
+  max-width: 285px;
 }
 .login-page .logo {
   width: 128px;
+}
+.login-page .title {
+  margin: 30px 0 10px;
+}
+.login-page .description {
+  max-width: 200px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+body {
+  padding: 0;
+  margin: 0;
 }
 
 /*# sourceMappingURL=/tg-app.e31bb0bc.css.map */

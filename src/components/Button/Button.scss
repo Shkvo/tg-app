@@ -1,5 +1,11 @@
+@import '../../styles/variables';
+
 .default-input {
-  height: 50px;
+  height: 45px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid $light-blue;
+  color: $white;
+  background: $blue;
 }

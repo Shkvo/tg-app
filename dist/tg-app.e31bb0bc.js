@@ -373,9 +373,13 @@ var _default = function _default(_ref) {
   var element = (0, _createDefaultElement.default)({
     elementName: type,
     className: className ? "".concat(textTypes[type], " ").concat(className) : "".concat(textTypes[type]),
-    children: children,
     onClick: onClick
   });
+
+  if (children) {
+    element.append(children);
+  }
+
   return element;
 };
 
@@ -396,7 +400,89 @@ Object.defineProperty(exports, "default", {
 var _Text = _interopRequireDefault(require("./Text"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Text":"src/components/Text/Text.js"}],"src/images/t_logo.png":[function(require,module,exports) {
+},{"./Text":"src/components/Text/Text.js"}],"src/components/Input/Input.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/components/Input/Input.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+require("./Input.scss");
+
+var _createDefaultElement = _interopRequireDefault(require("../../utils/createDefaultElement"));
+
+var _Container = _interopRequireDefault(require("../Container"));
+
+var _Text = _interopRequireDefault(require("../Text"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = function _default(_ref) {
+  var type = _ref.type,
+      pattern = _ref.pattern,
+      onChange = _ref.onChange,
+      className = _ref.className,
+      placeholder = _ref.placeholder;
+  var input = (0, _createDefaultElement.default)({
+    elementName: 'input',
+    className: className ? "default-input ".concat(className) : 'default-input'
+  });
+  var label = (0, _Text.default)({
+    type: 'span',
+    className: 'input-label',
+    children: placeholder
+  });
+
+  if (onChange) {
+    input.addEventListener('change', onChange);
+  }
+
+  if (type) {
+    input.type = type;
+  }
+
+  if (pattern) {
+    input.pattern = pattern;
+  }
+
+  input.addEventListener('keyup', function (e) {
+    if (e.target.value) {
+      label.classList.add('active');
+    } else {
+      label.classList.remove('active');
+    }
+  });
+  var element = new _Container.default({
+    className: 'input-wrapper',
+    children: [input, label]
+  });
+  return element;
+};
+
+exports.default = _default;
+},{"./Input.scss":"src/components/Input/Input.scss","../../utils/createDefaultElement":"src/utils/createDefaultElement.js","../Container":"src/components/Container/index.js","../Text":"src/components/Text/index.js"}],"src/components/Input/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "default", {
+  enumerable: true,
+  get: function () {
+    return _Input.default;
+  }
+});
+
+var _Input = _interopRequireDefault(require("./Input"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"./Input":"src/components/Input/Input.js"}],"src/images/t_logo.png":[function(require,module,exports) {
 module.exports = "/t_logo.87705f11.png";
 },{}],"src/pages/LoginPage/LoginPage.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
@@ -417,6 +503,8 @@ var _Image = _interopRequireDefault(require("../../components/Image"));
 
 var _Text = _interopRequireDefault(require("../../components/Text"));
 
+var _Input = _interopRequireDefault(require("../../components/Input"));
+
 var _t_logo = _interopRequireDefault(require("../../images/t_logo.png"));
 
 require("./LoginPage.scss");
@@ -429,15 +517,24 @@ var _default = function _default() {
     className: 'logo'
   });
   var HeadingText = (0, _Text.default)({
-    type: 'h1',
-    children: 'Sign in to Telegram'
+    type: 'h2',
+    children: 'Sign in to Telegram',
+    className: 'title'
+  });
+  var PhoneInput = (0, _Input.default)({
+    placeholder: 'Phone Number',
+    type: 'tel'
+  });
+  var CountryInput = (0, _Input.default)({
+    placeholder: 'Country'
   });
   var DefaultText = (0, _Text.default)({
     type: 'span',
-    children: 'Please confirm your country and enter your phone'
+    children: 'Please confirm your country and enter your phone number.',
+    className: 'description'
   });
   var LoginPage = (0, _Container.default)({
-    children: [TelegramLogo, HeadingText, DefaultText],
+    children: [TelegramLogo, HeadingText, DefaultText, CountryInput, PhoneInput],
     className: 'login-page'
   });
   document.body.innerHTML = '';
@@ -445,7 +542,7 @@ var _default = function _default() {
 };
 
 exports.default = _default;
-},{"../../components/Container":"src/components/Container/index.js","../../components/Image":"src/components/Image/index.js","../../components/Text":"src/components/Text/index.js","../../images/t_logo.png":"src/images/t_logo.png","./LoginPage.scss":"src/pages/LoginPage/LoginPage.scss"}],"src/router.js":[function(require,module,exports) {
+},{"../../components/Container":"src/components/Container/index.js","../../components/Image":"src/components/Image/index.js","../../components/Text":"src/components/Text/index.js","../../components/Input":"src/components/Input/index.js","../../images/t_logo.png":"src/images/t_logo.png","./LoginPage.scss":"src/pages/LoginPage/LoginPage.scss"}],"src/router.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -498,15 +595,22 @@ var _default = function _default() {
 };
 
 exports.default = _default;
-},{"./router":"src/router.js"}],"index.js":[function(require,module,exports) {
+},{"./router":"src/router.js"}],"index.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _initialize = _interopRequireDefault(require("./src/initialize"));
 
+require("./index.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _initialize.default)();
-},{"./src/initialize":"src/initialize.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./src/initialize":"src/initialize.js","./index.scss":"index.scss"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -534,7 +638,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50885" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51498" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

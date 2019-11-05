@@ -21,9 +21,12 @@ export default ({
   const element = createDefaultElement({
     elementName: type,
     className: className ? `${textTypes[type]} ${className}` : `${textTypes[type]}`,
-    children,
     onClick,
   });
+
+  if (children) {
+    element.append(children);
+  }
 
   return element;
 };
