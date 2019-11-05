@@ -1,11 +1,15 @@
 @import '../../styles/variables';
 
-.default-input {
+.default-button {
   height: 45px;
   width: 100%;
   border-radius: 10px;
   outline: none;
-  border: 1px solid $light-blue;
+  border: 1px solid $blue;
   color: $white;
   background: $blue;
+  cursor: pointer;
+  font-size: $font-size-14;
+  text-transform: uppercase;
+  margin-top: 20px;
 }
