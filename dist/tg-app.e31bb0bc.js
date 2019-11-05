@@ -459,52 +459,24 @@ var _LoginPage = _interopRequireDefault(require("./pages/LoginPage/LoginPage"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var Router =
-/*#__PURE__*/
-function () {
-  function Router() {
-    var _this = this;
-
-    _classCallCheck(this, Router);
-
-    this.definedRoutes = Object.freeze({
-      '/': _HomePage.default,
-      '/login': _LoginPage.default
-    });
-    window.addEventListener('popstate', function () {
-      var route = window.location.pathname;
-
-      _this.definedRoutes[route]();
-    });
-  }
-
-  _createClass(Router, [{
-    key: "setRoute",
-    value: function setRoute(route) {
+var Router = function Router() {
+  var definedRoutes = Object.freeze({
+    '/': _HomePage.default,
+    '/login': _LoginPage.default
+  });
+  window.addEventListener('popstate', function () {
+    var route = window.location.pathname;
+    definedRoutes[route]();
+  });
+  return {
+    setRoute: function setRoute(route) {
       window.history.pushState(null, '', route);
-      this.definedRoutes[route]();
+      definedRoutes[route]();
     }
-  }], [{
-    key: "getInstance",
-    value: function getInstance() {
-      if (!this.instance) {
-        this.instance = new Router();
-      }
+  };
+};
 
-      return this.instance;
-    }
-  }]);
-
-  return Router;
-}();
-
-var _default = Router.getInstance();
+var _default = new Router();
 
 exports.default = _default;
 },{"./pages/HomePage/HomePage":"src/pages/HomePage/HomePage.js","./pages/LoginPage/LoginPage":"src/pages/LoginPage/LoginPage.js"}],"src/initialize.js":[function(require,module,exports) {
@@ -562,7 +534,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49369" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50885" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
