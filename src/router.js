@@ -4,7 +4,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 const Router = () => {
   const definedRoutes = Object.freeze({
     '/': HomePage,
-    '/login': LoginPage,
+    '/login': LoginPage(),
   });
 
   window.addEventListener('popstate', () => {

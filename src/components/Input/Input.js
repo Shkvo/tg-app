@@ -38,7 +38,11 @@ export default ({
     input.pattern = pattern;
   }
 
-  input.addEventListener('keyup', (e) => {
+  input.addEventListener('focus', (e) => {
+    label.classList.add('active');
+  });
+
+  input.addEventListener('blur', (e) => {
     if (e.target.value) {
       label.classList.add('active');
     } else {
