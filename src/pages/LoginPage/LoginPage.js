@@ -67,10 +67,11 @@ export default () => {
     }
   };
 
-  document.body.innerHTML = '';
   return () => {
     CountryInput.addEventListener('input', updateCountry);
     PhoneInput.addEventListener('input', updatePhone);
+
+    document.body.innerHTML = '';
     document.body.append(LoginPage);
   };
 };

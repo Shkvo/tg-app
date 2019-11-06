@@ -5,6 +5,7 @@
   margin-bottom: 20px;
 
   .default-input {
+    z-index: 1;
     position: relative;
     height: 45px;
     width: 100%;
@@ -15,6 +16,7 @@
     font-size: $font-size-14;
     font-weight: 400;
     color: #000000;
+    background: transparent;
     caret-color: #009ee7;
     transition: .1s ease-in-out all;
 
@@ -31,11 +33,12 @@
 
   .input-label {
     position: absolute;
+    z-index: 0;
     left: 13px;
     top: 50%;
     transform: translateY(-50%);
     background: $white;
-    color: $gray;
+    color: $dark-gray;
     transition: .1s ease-in-out all;
     font-size: $font-size-14;
   }
@@ -45,7 +48,8 @@
     left: 9px;
     top: 0px;
     padding: 0 5px;
-    color: $gray;
+    color: $dark-gray;
+    z-index: 2;
   }
 
   .default-input:focus ~ .input-label.active,
