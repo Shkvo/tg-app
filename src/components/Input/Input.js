@@ -5,6 +5,7 @@ import Text from '../Text';
 
 export default ({
   type,
+  value,
   pattern,
   onChange,
   className,
@@ -21,8 +22,12 @@ export default ({
     children: placeholder,
   });
 
+  if (value) {
+    input.value = value;
+  }
+
   if (onChange) {
-    input.addEventListener('change', onChange);
+    input.addEventListener('keyup', onChange);
   }
 
   if (type) {
