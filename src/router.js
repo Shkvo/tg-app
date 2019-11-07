@@ -2,10 +2,10 @@ import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 
 const Router = () => {
-  const definedRoutes = Object.freeze({
+  const definedRoutes = {
     '/': HomePage,
-    '/login': LoginPage(),
-  });
+    '/login': LoginPage,
+  };
 
   window.addEventListener('popstate', () => {
     const route = window.location.pathname;
@@ -20,4 +20,4 @@ const Router = () => {
   };
 };
 
-export default new Router();
+export default Router();

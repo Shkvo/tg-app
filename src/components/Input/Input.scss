@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 
-.input-wrapper {
+.input-wrapper, .select-wrapper {
   position: relative;
   margin-bottom: 20px;
 
@@ -15,14 +15,13 @@
     padding: 0 12px;
     font-size: $font-size-14;
     font-weight: 400;
-    color: #000000;
+    color: $black;
     background: transparent;
     caret-color: #009ee7;
     transition: .1s ease-in-out all;
 
     &::placeholder {
-      color: $gray;
-      position: absolute;
+      display: none;
     }
 
     &:focus, &:hover {
@@ -38,7 +37,7 @@
     top: 50%;
     transform: translateY(-50%);
     background: $white;
-    color: $dark-gray;
+    color: $lighter-dark-gray;
     transition: .1s ease-in-out all;
     font-size: $font-size-14;
   }
@@ -48,12 +47,51 @@
     left: 9px;
     top: 0px;
     padding: 0 5px;
-    color: $dark-gray;
+    color: $lighter-dark-gray;
     z-index: 2;
   }
 
   .default-input:focus ~ .input-label.active,
   .default-input:hover ~ .input-label.active {
     color: #009ee7;
+  }
+}
+
+.select-wrapper {
+  &:after, &.active:after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    height: 21px;
+    width: 21px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    background-size: contain;
+    background-image: url(../../images/up_gray.png);
+  }
+
+  &.active:after {
+    transform: translateY(-50%);
+    background-image: url(../../images/up_blue.png);
+  }
+
+  .select-popup {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    top: 53px;
+    height: fit-content;
+    max-height: 43vh;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.22);
+    background: $white;
+    overflow: hidden;
+    overflow-y: auto;
+    cursor: pointer;
+
+    &.active {
+      display: block;
+    }
   }
 }

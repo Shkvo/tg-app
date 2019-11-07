@@ -2,7 +2,7 @@
   "name": "tg-app",
   "version": "1.0.0",
   "description": "Telegram lightweight app",
-  "main": "index.js",
+  "main": "index.html",
   "author": "Shkvo <dimashkvo@gmail.com>",
   "license": "MIT",
   "private": false,
@@ -17,5 +17,15 @@
     "eslint-plugin-import": "^2.18.2",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.23.3"
+  },
+  "browserslist": [
+    "last 1 Chrome version",
+    "Firefox ESR",
+    "last 1 safari version",
+    "last 1 opera version",
+    "last 1 edge version"
+  ],
+  "dependencies": {
+    "country-code-emoji": "^1.0.0"
   }
 }
