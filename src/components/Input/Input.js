@@ -10,7 +10,6 @@ export default ({
   pattern,
   onChange,
   className,
-  maxLength,
   placeholder,
   filterQuery,
   renderItemElement,
@@ -80,10 +79,6 @@ export default ({
     });
   }
 
-  if (maxLength) {
-    input.maxlength = maxLength;
-  }
-
   if (value) {
     input.value = value;
   }
@@ -105,7 +100,7 @@ export default ({
     }
   });
 
-  input.addEventListener('blur', (e) => {
+  input.addEventListener('blur', () => {
     if (type === 'select') {
       element.classList.remove('active');
       popup.classList.remove('active');

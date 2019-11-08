@@ -27,7 +27,6 @@ export default async () => {
   const PhoneInput = Input({
     placeholder: 'Phone Number',
     type: 'tel',
-    maxLength: 15,
   });
 
   const CountrySelect = Input({
@@ -130,12 +129,23 @@ export default async () => {
     }
   };
 
+  const validatePhone = (e) => {
+    if (e.target.value.length % 4 === 0) {
+      PhoneInput.firstElementChild.value = e.target.value.concat(' ');
+    }
+
+    if (e.target.value.length >= 19) {
+      e.preventDefault();
+    }
+  };
+
   const toggleKeepSigned = () => {
     KeepSignedCheckbox.firstElementChild.checked = !KeepSignedCheckbox.firstElementChild.checked;
   };
 
   CountrySelect.addEventListener('input', updateCountry);
   PhoneInput.addEventListener('input', updatePhone);
+  PhoneInput.addEventListener('keydown', validatePhone);
   KeepSignedContainer.addEventListener('click', toggleKeepSigned);
 
   document.body.innerHTML = '';
