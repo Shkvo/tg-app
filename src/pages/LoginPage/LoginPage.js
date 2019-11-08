@@ -27,6 +27,7 @@ export default async () => {
   const PhoneInput = Input({
     placeholder: 'Phone Number',
     type: 'tel',
+    maxLength: 15,
   });
 
   const CountrySelect = Input({
@@ -104,6 +105,11 @@ export default async () => {
   });
 
   const updatePhone = (e) => {
+    if (!e.target.value) {
+      CountrySelect.firstElementChild.value = '';
+      CountrySelect.children[1].classList.remove('active');
+    }
+
     if (e.target.value.length && CountrySelect.firstElementChild.value.length) {
       NextButton.style.display = 'block';
     } else {
@@ -112,6 +118,11 @@ export default async () => {
   };
 
   const updateCountry = (e) => {
+    if (!e.target.value) {
+      PhoneInput.firstElementChild.value = '';
+      PhoneInput.children[1].classList.remove('active');
+    }
+
     if (e.target.value.length && PhoneInput.firstElementChild.value.length) {
       NextButton.style.display = 'block';
     } else {

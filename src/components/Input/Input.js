@@ -10,6 +10,7 @@ export default ({
   pattern,
   onChange,
   className,
+  maxLength,
   placeholder,
   filterQuery,
   renderItemElement,
@@ -49,6 +50,8 @@ export default ({
       children: mappedChildren,
     });
 
+    popup.addEventListener('mousedown', (e) => e.preventDefault());
+
     input.addEventListener('input', () => {
       const filteredItems = items.filter((childrenItem) => childrenItem[filterQuery].toLowerCase()
         .includes(input.value.toLowerCase()));
@@ -58,6 +61,7 @@ export default ({
         children: filteredItems.map(selectItemMap),
       });
 
+      popupWithFilteredItems.addEventListener('mousedown', (e) => e.preventDefault());
       popup.replaceWith(popupWithFilteredItems);
       popup = popupWithFilteredItems;
     });
@@ -74,6 +78,10 @@ export default ({
     element.addEventListener('blur', () => {
       popup.classList.remove('active');
     });
+  }
+
+  if (maxLength) {
+    input.maxlength = maxLength;
   }
 
   if (value) {
@@ -97,17 +105,18 @@ export default ({
     }
   });
 
-  input.addEventListener('blur', () => {
+  input.addEventListener('blur', (e) => {
+    if (type === 'select') {
+      element.classList.remove('active');
+      popup.classList.remove('active');
+    }
+
     if (input.value) {
       label.classList.add('active');
     } else {
       label.classList.remove('active');
     }
-    if (type === 'select') {
-      element.classList.remove('active');
-      // popup.classList.remove('active');
-    }
-  }, false);
+  });
 
   return element;
 };
