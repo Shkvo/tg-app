@@ -109,7 +109,7 @@ export default async () => {
       CountrySelect.children[1].classList.remove('active');
     }
 
-    if (e.target.value.length && CountrySelect.firstElementChild.value.length) {
+    if ((e.target.value.length > 15) && CountrySelect.firstElementChild.value.length) {
       NextButton.style.display = 'block';
     } else {
       NextButton.style.display = 'none';
@@ -145,7 +145,7 @@ export default async () => {
 
   CountrySelect.addEventListener('input', updateCountry);
   PhoneInput.addEventListener('input', updatePhone);
-  PhoneInput.addEventListener('keydown', validatePhone);
+  PhoneInput.addEventListener('keypress', validatePhone);
   KeepSignedContainer.addEventListener('click', toggleKeepSigned);
 
   document.body.innerHTML = '';
